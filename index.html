@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="Ankit Kumar — student, developer and problem solver. Explore projects, skills and experience.">
+  <title>Ankit Kumar | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home"><span class="brand-mark">A</span><span>ANKIT<span class="brand-muted">.DEV</span></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav id="mainNav"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact" class="nav-cta">Contact</a></nav>
+  </header>
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> AVAILABLE FOR LEARNING & OPPORTUNITIES</div>
+        <p class="hero-kicker">HELLO, I'M</p>
+        <h1 id="heroName">Ankit Kumar<span class="accent">.</span></h1>
+        <h2 id="heroRole">Student · Developer · Curious Learner</h2>
+        <p class="hero-description" id="heroIntro">I enjoy turning ideas into useful digital experiences, learning new technologies and building projects that solve real problems.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <span>↗</span></a><a class="button button-ghost" id="resumeLink" href="#contact">Let's connect</a></div>
+        <div class="hero-social" id="socialLinks"></div>
+      </div>
+      <div class="hero-visual">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="profile-card"><div class="profile-glow"></div><img id="profileImage" src="assets/avatar.svg" alt="Ankit Kumar profile" onerror="this.src='assets/avatar.svg'"><div class="profile-caption"><span>BUILDING THE FUTURE</span><b>One project at a time.</b></div></div>
+        <div class="floating-chip chip-top">✦ Creative thinking</div><div class="floating-chip chip-bottom">⌘ Continuous learning</div>
+      </div>
+    </section>
+    <section class="section-wrap section-block" id="about">
+      <div class="section-heading"><p class="eyebrow">01 / ABOUT</p><h2>A little about <span class="accent">me</span></h2></div>
+      <div class="about-grid"><div class="about-lead" id="aboutText">I am Ankit Kumar, a student interested in technology, software development and practical problem-solving. I believe in learning by building and improving a little every day.</div><div class="about-facts" id="aboutFacts"></div></div>
+    </section>
+    <section class="section-wrap section-block" id="skills">
+      <div class="section-heading"><p class="eyebrow">02 / TOOLKIT</p><h2>Skills & <span class="accent">technologies</span></h2><p class="section-subtitle">Tools I am learning and using to bring ideas to life.</p></div>
+      <div class="skill-grid" id="skillsGrid"><div class="empty-state">Skills will appear here.</div></div>
+    </section>
+    <section class="section-wrap section-block" id="projects">
+      <div class="section-heading"><p class="eyebrow">03 / SELECTED WORK</p><h2>Featured <span class="accent">projects</span></h2><p class="section-subtitle">A selection of things I have designed, explored or built.</p></div>
+      <div class="project-grid" id="projectsGrid"><div class="empty-state">Projects will appear here.</div></div>
+    </section>
+    <section class="section-wrap section-block" id="experience">
+      <div class="section-heading"><p class="eyebrow">04 / JOURNEY</p><h2>Experience & <span class="accent">activities</span></h2></div>
+      <div class="timeline" id="experienceList"><div class="empty-state">Experience will appear here.</div></div>
+    </section>
+    <section class="section-wrap section-block" id="education">
+      <div class="section-heading"><p class="eyebrow">05 / LEARNING</p><h2>Education & <span class="accent">learning</span></h2></div>
+      <div class="education-grid" id="educationList"><div class="empty-state">Education will appear here.</div></div>
+    </section>
+    <section class="section-wrap contact-section section-block" id="contact">
+      <div><p class="eyebrow">06 / GET IN TOUCH</p><h2>Have an idea?<br><span class="accent">Let's connect.</span></h2><p class="section-subtitle">I’m open to learning, collaboration and meaningful conversations.</p></div>
+      <div class="contact-card"><p>CONTACT</p><a id="emailLink" href="mailto:hello@example.com">hello@example.com</a><div class="contact-social" id="contactLinks"></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© <span id="year"></span> ANKIT KUMAR</span><span>Designed with purpose · Built to grow</span><a href="admin.html">Admin</a></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/config.js"></script><script src="assets/app.js"></script>
+</body></html>
