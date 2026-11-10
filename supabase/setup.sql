@@ -57,7 +57,7 @@ create table if not exists public.education (
 insert into public.profile (id,name) values (1,'Ankit Kumar') on conflict (id) do nothing;
 
 -- Admin identity: only this explicitly inserted Auth user is an administrator.
-insert into public.admins(user_id) values ('YOUR_AUTH_USER_UUID')
+insert into public.admins(user_id) values ('195a7fef-2ba8-431d-b349-1c98168d23b9')
 on conflict (user_id) do nothing;
 
 create or replace function public.is_portfolio_admin()
