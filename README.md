@@ -1,60 +1,30 @@
-# ANKIT KUMAR — Premium Portfolio
+# ANKIT KUMAR — Premium Portfolio CMS
 
-A responsive portfolio with a Supabase-backed admin dashboard, hosted as a static site on Netlify.
+A responsive dark portfolio with a Supabase-powered admin dashboard, Netlify hosting and GitHub auto-deploy.
 
-## Included
-- Public portfolio: About, Skills, Projects, Experience, Education and Contact
-- Private admin login, restricted by an explicit admin UUID in the database
-- Admin content editing and profile image upload
-- Password recovery email, password update and email change confirmation
-- Supabase Postgres + Auth + Storage with Row Level Security (RLS)
+## Features
+- 10 dark themes with matching accent palettes and 6 font choices
+- 6 layout styles (Showcase, Editorial, Minimal, Grid Focus, Developer Terminal, Magazine)
+- Editable welcome intro, profile details and profile photo presentation
+- Skills, projects, experience, education, certificates and achievements management
+- Public contact form and private admin message inbox
+- Supabase Auth admin allow-list and Row Level Security
+- Mobile navigation, reduced-motion support, SEO metadata and responsive layout
 
-## Setup (one-time)
+## Existing project upgrade (important)
+This version is designed as an additive upgrade. It keeps the existing tables (`profile`, `skills`, `projects`, `experiences`, `education`, `admins`) and does not ask you to delete your current Supabase project or data.
 
-### 1. Create Supabase project
-Create a free project at https://supabase.com. Open **Project Settings → API** and copy:
-- Project URL
-- Publishable key (or legacy anon key)
+1. Replace the files in your existing GitHub repository with these files and commit the changes.
+2. In Supabase, open SQL Editor and run `supabase/upgrade.sql` once. Do not rerun the old setup script unless you are creating a brand-new database.
+3. Confirm `assets/config.js` still contains your own existing Supabase Project URL and publishable/anon key. Do not replace these with placeholders.
+4. Wait for Netlify deployment to finish, then open `/admin.html` and sign in with your existing admin account.
+5. In Admin → Design & Intro, choose a theme/layout/font and save. Add certificates and achievements under their tab. Visitor contact form messages appear in Admin → Messages.
 
-Do not use a `service_role` or secret key in browser code.
+## Supabase configuration
+`assets/config.js` uses the browser-safe publishable/anon key only. Never put a `service_role` or secret key in frontend files or GitHub.
 
-### 2. Create the admin account
-In Supabase: **Authentication → Users → Add user**. Use your own email and a strong unique password. Confirm the email if your project settings require it. Copy the user's UUID.
+## Contact form
+The form inserts visitor messages into `contact_messages`. Only the allow-listed admin can read/delete those messages. Automatic email notification is not enabled by this static frontend; enable a Supabase Edge Function or trusted email service separately if email alerts are required.
 
-### 3. Configure database and security
-Open **SQL Editor**, open `supabase/setup.sql`, replace `YOUR_AUTH_USER_UUID` with the UUID from step 2, and run the script.
-
-This script creates the portfolio tables, an admin allow-list, RLS policies and the public image bucket. Only the explicitly allow-listed Auth user can write portfolio content.
-
-### 4. Connect the website
-Open `assets/config.js` and replace:
-- `YOUR_SUPABASE_PROJECT_URL`
-- `YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY`
-
-The publishable/anon key is intended for browser use. RLS is the security boundary. Never paste the service-role key here or commit it to GitHub.
-
-### 5. Deploy to Netlify
-1. Upload this project folder to a new GitHub repository (keep the folder structure).
-2. In Netlify choose **Add new site → Import an existing project**.
-3. Connect GitHub and select the repository.
-4. Build command: leave blank. Publish directory: `.`.
-5. Deploy. Your public URL will be a `*.netlify.app` address.
-
-### 6. Open admin
-Visit `https://YOUR-SITE.netlify.app/admin.html` and sign in with the Auth email/password created in step 2.
-
-## Admin usage
-- Profile: edit name, headline, intro, about, email, location and upload a JPG/PNG/WEBP photo (max 3 MB).
-- Skills: add, edit or delete skills.
-- Projects: add, edit or delete projects; tags are comma-separated.
-- Experience and Education: add, edit or delete entries.
-- Account: change password or request an email change confirmation.
-- Forgot password: enter the registered email on the login page; Supabase sends a recovery email.
-
-## Important notes
-- The admin login is not a hardcoded browser password. Supabase Auth verifies credentials and database RLS checks the admin allow-list.
-- Public visitors can read published portfolio data. Only the allow-listed admin can change it.
-- Set your correct website URL under Supabase **Authentication → URL Configuration → Site URL / Redirect URLs** so password recovery redirects back to your deployed site. Add both your Netlify URL and any custom domain.
-- Add social links by editing `profile.social_links` in Supabase Table Editor as JSON, e.g. `[{"label":"GitHub","url":"https://github.com/your-id"},{"label":"LinkedIn","url":"https://linkedin.com/in/your-id"}]`.
-- Free service limits can change; review current Netlify and Supabase plan limits before relying on production usage.
-- The supplied profile photo is a placeholder. Upload your own photo in Admin after setup.
+## Deployment
+Netlify should remain connected to the existing GitHub repository. Every commit to the production branch triggers a new deploy. Database content remains in Supabase and is not overwritten by a frontend deployment.
